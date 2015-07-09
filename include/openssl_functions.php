@@ -59,7 +59,7 @@ crl              = $config[cacrl_pem]
 private_key      = $config[cakey]
 crl_extentions	 = crl_ext
 default_days     = 365
-default_crl_days = 30
+default_crl_days = 1
 preserve         = no
 default_md       = sha512
 
@@ -142,10 +142,10 @@ nsComment              = $config[comment_root]
 nsCaPolicyUrl          = $config[base_url]$config[policy_url]
 
 [ email_ext ]
-basicConstraints       = critical, CA:false
-keyUsage               = critical, nonRepudiation, digitalSignature, keyEncipherment
-extendedKeyUsage       = critical, emailProtection, clientAuth
-nsCertType             = critical, client, email
+basicConstraints       = CA:false
+keyUsage               = nonRepudiation, digitalSignature, keyEncipherment
+extendedKeyUsage       = emailProtection, clientAuth
+nsCertType             = client, email
 subjectKeyIdentifier   = hash
 authorityKeyIdentifier = keyid:always, issuer:always
 subjectAltName         = email:copy
@@ -157,10 +157,10 @@ nsRevocationUrl        = $config[base_url]$config[revoke_url]$serial
 nsCaPolicyUrl          = $config[base_url]$config[policy_url]
 
 [ email_signing_ext ]
-basicConstraints       = critical, CA:false
-keyUsage               = critical, nonRepudiation, digitalSignature, keyEncipherment
-extendedKeyUsage       = critical, emailProtection, clientAuth, codeSigning
-nsCertType             = critical, client, email
+basicConstraints       = CA:false
+keyUsage               = nonRepudiation, digitalSignature, keyEncipherment
+extendedKeyUsage       = emailProtection, clientAuth, codeSigning
+nsCertType             = client, email
 subjectKeyIdentifier   = hash
 authorityKeyIdentifier = keyid:always, issuer:always
 subjectAltName         = email:copy

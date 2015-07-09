@@ -12,7 +12,7 @@ crl			= /var/www/phpki-store/CA/crl/cacrl.pem
 private_key		= /var/www/phpki-store/CA/private/cakey.pem
 crl_extensions		= crl_ext
 default_days		= 365
-default_crl_days	= 30
+default_crl_days	= 1
 preserve	 	= no
 default_md	 	= sha512
 
@@ -66,10 +66,10 @@ nsComment              = "PHPki/OpenSSL Generated Root Certificate Authority"
 nsCaPolicyUrl          = http://www.somewhere.com/phpki/policy.html
 
 [ email_ext ]
-basicConstraints       = critical, CA:false
-keyUsage               = critical, nonRepudiation, digitalSignature, keyEncipherment
-extendedKeyUsage       = critical, emailProtection, clientAuth
-nsCertType             = critical, client, email
+basicConstraints       = CA:false
+keyUsage               = nonRepudiation, digitalSignature, keyEncipherment
+extendedKeyUsage       = emailProtection, clientAuth
+nsCertType             = client, email
 subjectKeyIdentifier   = hash
 authorityKeyIdentifier = keyid:always, issuer:always
 subjectAltName         = email:copy
@@ -83,10 +83,10 @@ nsCaPolicyUrl          = http://www.somewhere.com/phpki/policy.html
 #nsSslServerName       =
 
 [ email_signing_ext ]
-basicConstraints       = critical, CA:false
-keyUsage               = critical, nonRepudiation, digitalSignature, keyEncipherment
-extendedKeyUsage       = critical, emailProtection, clientAuth, codeSigning
-nsCertType             = critical, client, email
+basicConstraints       = CA:false
+keyUsage               = nonRepudiation, digitalSignature, keyEncipherment
+extendedKeyUsage       = emailProtection, clientAuth, codeSigning
+nsCertType             = client, email
 subjectKeyIdentifier   = hash
 authorityKeyIdentifier = keyid:always, issuer:always
 subjectAltName         = email:copy
