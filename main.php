@@ -29,6 +29,7 @@ case 'display_root':
 	break;
 
 case 'dl_crl':
+	list($ret,$errtxt) = CA_generate_crl();
 	upload("$config[cacrl_der]", "$config[ca_prefix]cacrl.crl", 'application/pkix-crl');
 	break;
 
